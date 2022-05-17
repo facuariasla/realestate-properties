@@ -26,7 +26,7 @@ export const Property = ({
 
   return (
     <Link href={`/property/${externalID}`} passHref>
-      <Stack padding={1} >
+      <Stack padding={1}>
         <Flex
 
           flexWrap="wrap"
