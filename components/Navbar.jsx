@@ -11,13 +11,21 @@ import {
   Spacer,
   Stack,
   Heading,
+  Icon,
+  useColorModeValue,
+  useColorMode
 } from "@chakra-ui/react";
 import { FcMenu, FcHome, FcAbout } from "react-icons/fc";
 import { BsSearch } from "react-icons/bs";
 import { FiKey } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { BsMoonStarsFill, BsFillSunFill } from "react-icons/bs";
 
 export const Navbar = () => {
+  const { toggleColorMode } = useColorMode();
+  const iconMode = useColorModeValue(BsMoonStarsFill, BsFillSunFill);
+  const colorComp = useColorModeValue('gray.100', 'gray.700');
+
   return (
     <Stack
       direction="row"
@@ -25,11 +33,11 @@ export const Navbar = () => {
       px={6}
       py={4}
       borderBottom="1px"
-      borderColor="gray.100"
+      borderColor={colorComp}
     >
       <Stack>
         <Link href="/" passHref>
-          <Heading color="blue.400" fontWeight="bold" margin={0}>
+          <Heading color="blue.400" fontWeight="bold" margin={0} cursor='pointer' >
             Realtor
           </Heading>
         </Link>
@@ -55,6 +63,11 @@ export const Navbar = () => {
           <Link href="/search?purpose=for-rent" passHref>
             <MenuItem icon={<FiKey />}>Rent Property</MenuItem>
           </Link>
+          <MenuItem onClick={toggleColorMode} justifyContent='center' pt={3}>
+            <Icon as={iconMode} cursor='pointer'  fontSize={20}/>
+          </MenuItem>
+
+          
         </MenuList>
       </Menu>
     </Stack>

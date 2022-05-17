@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Flex, Box, Text, Button } from "@chakra-ui/react";
+import { Flex, Box, Text, Button, useColorModeValue } from "@chakra-ui/react";
 import { baseUrl, fetchApi } from "../utils/fetchApi";
 import Property from "../components/Property";
 
@@ -14,6 +14,9 @@ const Banner = ({
   linkName,
   imageUrl,
 }) => {
+
+  const colorComp = useColorModeValue('gray.500', 'gray.500');
+
   return (
     <Flex flexWrap="wrap" justifyContent="center" alignItems="center" m="10">
       <Image src={imageUrl} width={500} height={300} alt="banner" />
@@ -26,7 +29,7 @@ const Banner = ({
           <br />
           {title2}
         </Text>
-        <Text color="gray.700" fontSize="lg" fontWeight="medium" py="3">
+        <Text color='gray.500' fontSize="lg" fontWeight="medium" py="3">
           {desc1}
           <br />
           {desc2}
@@ -41,6 +44,8 @@ const Banner = ({
 
 export default function Home({ propertiesForSale, propertiesForRent }) {
   // console.log(propertiesForSale, propertiesForRent);
+  const colorComp = useColorModeValue('black', 'gray.200');
+
   return (
     <Box>
       <Banner
@@ -54,13 +59,14 @@ export default function Home({ propertiesForSale, propertiesForRent }) {
         imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/145426814/33973352624c48628e41f2ec460faba4"
       />
 
-      <Flex flexWrap="wrap">
+      <Flex flexWrap="wrap" justifyContent='center'>
         {propertiesForRent.map((property) => (
           <Property property={property} key={property.id} />
         ))}
       </Flex>
-
+        <hr/>
       <Banner
+      
         purpose={"BUY A HOME"}
         title1="Find, Buy & Own Your"
         title2="Dream Home"
@@ -70,7 +76,7 @@ export default function Home({ propertiesForSale, propertiesForRent }) {
         linkName="/search?purpose=for-sale"
         imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/110993385/6a070e8e1bae4f7d8c1429bc303d2008"
       />
-      <Flex flexWrap="wrap">
+      <Flex flexWrap="wrap" justifyContent='center'>
         {propertiesForSale.map((property) => (
           <Property property={property} key={property.id} />
         ))}
