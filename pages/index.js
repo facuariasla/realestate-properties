@@ -15,7 +15,6 @@ const Banner = ({
   imageUrl,
 }) => {
 
-  const colorComp = useColorModeValue('gray.500', 'gray.500');
 
   return (
     <Flex flexWrap="wrap" justifyContent="center" alignItems="center" m="10">

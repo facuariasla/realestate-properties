@@ -8,6 +8,7 @@ import {
   Spinner,
   Icon,
   Button,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import router from 'next/router'
 import { useRouter } from "next/router";
@@ -17,6 +18,7 @@ import { filterData, getFilterValues } from "../utils/filterData";
 
 const SearchFilters = () => {
   const [filters, setFilters] = useState(filterData);
+  const colorComp = useColorModeValue('gray.100', 'gray.800');
 
   const searchProperties = (filterValues) => {
     const path = router.pathname;
@@ -33,10 +35,11 @@ const SearchFilters = () => {
   };
 
   return (
-    <Flex bg="gray.100" p="4" justifyContent="center" flexWrap="wrap">
+    <Flex bg={colorComp} p="4" justifyContent="center" flexWrap="wrap">
       {filters.map((filter) => (
-        <Box key={filter.queryName}>
+        <Box key={filter.queryName} >
           <Select
+          cursor='pointer'
             placeholder={filter.placeholder}
             w="fit-content"
             p="2"

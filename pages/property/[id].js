@@ -1,4 +1,4 @@
-import { Box, Flex, Spacer, Text, Avatar } from "@chakra-ui/react";
+import { Box, Flex, Spacer, Text, Avatar, useColorModeValue } from "@chakra-ui/react";
 import { FaBed, FaBath } from "react-icons/fa";
 import { BsGridFill } from "react-icons/bs";
 import { GoVerified } from "react-icons/go";
@@ -24,6 +24,9 @@ const PropertyDetails = ({
     photos,
   },
 }) => {
+  const colorComp = useColorModeValue('gray.600', 'gray.400');
+  const colorBack = useColorModeValue('gray.300', 'gray.700');
+
   return (
     <Box maxWidth="1000px" margin="auto" p="4">
       {photos && <ImageScrollBar data={photos} />}
@@ -56,7 +59,7 @@ const PropertyDetails = ({
           <Text fontSize="lg" marginBottom="2" fontWeight="bold">
             {title}
           </Text>
-          <Text lineHeight="2" color="gray.600">
+          <Text lineHeight="2" color={colorComp}>
             {description}
           </Text>
         </Box>
@@ -112,7 +115,7 @@ const PropertyDetails = ({
                   color="blue.400"
                   fontSize="14"
                   p="2"
-                  bg="gray.200"
+                  bg={colorBack}
                   m="1"
                   borderRadius="5"
                   key={amenity.text}
