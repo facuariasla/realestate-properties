@@ -28,9 +28,11 @@ export const Navbar = () => {
       borderColor="gray.100"
     >
       <Stack>
-        <Heading color="blue.400" fontWeight="bold" margin={0}>
-          Realtor
-        </Heading>
+        <Link href="/" passHref>
+          <Heading color="blue.400" fontWeight="bold" margin={0}>
+            Realtor
+          </Heading>
+        </Link>
       </Stack>
 
       <Menu>
